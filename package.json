@@ -1,0 +1,66 @@
+{
+  "name": "lyra",
+  "version": "1.1.0-beta",
+  "description": "A virtual assistant for GNU/Linux",
+  "repository": "https://github.com/AndresMpa/lyra",
+  "homepage": "https://github.com/AndresMpa/lyra",
+  "author": "AndresMpa <ing.andres.m.prieto@gmail.com>, xcerock <xcerock@gmail.com>",
+  "license": "MIT",
+  "main": "main.js",
+  "keywords": [
+    "IA",
+    "Virtual",
+    "Assistant",
+    "GNU/Linux"
+  ],
+  "scripts": {
+    "start": "electron ./main.js",
+    "build": "electron-builder",
+    "postinstall": "cd backend && python3 -m venv venv && venv/bin/pip install -r requirements.txt"
+  },
+  "build": {
+    "appId": "Lyra: Your Cosmic Companion",
+    "productName": "lyra",
+    "directories": {
+      "output": "../dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "assets/**/*",
+      "config/**/*",
+      "eventHandlers/**/*",
+      "index.html",
+      "main.js",
+      "OS/**/*",
+      "preloader/**/*",
+      "styles/**/*",
+      "templates/**/*",
+      "utils/**/*",
+      "../backend/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend",
+        "to": "backend",
+        "filter": "**/*"
+      }
+    ],
+    "linux": {
+      "target": [
+        "deb",
+        "pacman",
+        "tar.gz"
+      ],
+      "category": "Utility",
+      "icon": "assets/app/256x256.png"
+    }
+  },
+  "dependencies": {
+    "axios": "^1.7.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "electron": "^30.0.2",
+    "electron-builder": "^24.13.3"
+  }
+}

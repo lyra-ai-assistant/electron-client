@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lyra</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' https://cdn.jsdelivr.net;"
+    />
+    <link rel="stylesheet" type="text/css" href="./styles/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <button class="navbar-button" id="addChat">
+          <img
+            src="./assets/figures/add.svg"
+            title="Add conversation"
+            class="big-icon"
+            alt="Add icon"
+          />
+        </button>
+
+        <div class="navbar-container-controls none" id="activeTabs">
+          <button
+            class="controls-button disabled-controls-button"
+            id="prevChat"
+          >
+            <img
+              src="./assets/figures/left.svg"
+              title="Previous conversation"
+              alt="Previous icon"
+              class="big-icon"
+            />
+          </button>
+          <button
+            class="controls-button none"
+            id="controlButton1"
+            data-value="-1"
+          ></button>
+          <button
+            class="controls-button none"
+            id="controlButton2"
+            data-value="0"
+          ></button>
+          <button
+            class="controls-button none"
+            id="controlButton3"
+            data-value="1"
+          ></button>
+          <button
+            class="controls-button disabled-controls-button"
+            id="nextChat"
+          >
+            <img
+              src="./assets/figures/right.svg"
+              title="Next conversation"
+              class="big-icon"
+              alt="Next icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="navbar-container-controls">
+        <button class="controls-button" id="deleteChat">
+          <img
+            src="./assets/figures/trash.svg"
+            title="Delete conversation"
+            alt="Delete icon"
+            class="big-icon"
+          />
+        </button>
+        <button class="navbar-button" id="menuButton">
+          <img
+            src="./assets/figures/menu.svg"
+            title="Open menu"
+            class="big-icon"
+            alt="Menu icon"
+          />
+        </button>
+      </div>
+    </nav>
+
+    <aside class="menu none" id="menu">
+      <article class="menu-container">
+        <figure class="menu-container-data">
+          <a href="https://github.com/AndresMpa/lyra" target="_blank">
+            <img
+              class="big-icon"
+              title="Follow Lyra's project!"
+              src="./assets/figures/github.svg"
+              alt="GitHub: https://github.com/AndresMpa/lyra"
+            />
+          </a>
+          <figcaption class="menu-container-caption">
+            <a href="https://github.com/AndresMpa/lyra" target="_blank">
+              Follow Lyra's project!
+            </a>
+          </figcaption>
+        </figure>
+
+        <figure class="menu-container-data">
+          <a href="https://github.com/AndresMpa/lyra/issues" target="_blank">
+            <img
+              class="big-icon"
+              src="./assets/figures/bug.svg"
+              title="Found a bug? Report it here"
+              alt="Issues: https://github.com/AndresMpa/lyra/issues"
+            />
+          </a>
+          <figcaption class="menu-container-caption">
+            <a href="https://github.com/AndresMpa/lyra/issues" target="_blank">
+              Found a bug? Report it here
+            </a>
+          </figcaption>
+        </figure>
+
+        <div class="decoration"></div>
+
+        <div class="telemetry-box">
+          <p class="telemetry-caption">
+            Help us improve the Lyra's experience.
+          </p>
+
+          <div class="telemetry-switch">
+            <input
+              class="telemetry-switch-radio"
+              id="telemetry-on"
+              name="toggle"
+              type="radio"
+              checked
+            />
+            <label for="telemetry-on">On</label>
+            <input
+              class="telemetry-switch-radio"
+              id="telemetry-off"
+              name="toggle"
+              type="radio"
+            />
+            <label for="telemetry-off">Off</label>
+            <span class="telemetry-slider"></span>
+          </div>
+        </div>
+      </article>
+    </aside>
+
+    <div class="app" id="app">
+      <div class="app-info">
+        <section class="logo">
+          <figure class="logo-box">
+            <div class="logo-box-circle"></div>
+            <div class="logo-box-circle-variant"></div>
+            <img
+              class="logo-box-img"
+              src="./assets/figures/logo.png"
+              alt="Lyra logo"
+            />
+            <figcaption class="logo-box-title">
+              Your Cosmic Companion
+            </figcaption>
+          </figure>
+        </section>
+        <section class="widget">
+          <article class="widget-container">
+            <div class="widget-container-title">
+              <h2 class="metric-title">
+                <img
+                  src="./assets/figures/ram.svg"
+                  alt="RAM icon"
+                  class="icon"
+                />
+                RAM
+              </h2>
+            </div>
+            <canvas class="metric-plot" id="ramDrawer"></canvas>
+          </article>
+          <article class="widget-container">
+            <div class="widget-container-title">
+              <h2 class="metric-title">
+                <img
+                  src="./assets/figures/cpu.svg"
+                  alt="CPU icon"
+                  class="icon"
+                />
+                CPU
+              </h2>
+            </div>
+            <canvas class="metric-plot" id="cpuDrawer"></canvas>
+          </article>
+          <article class="widget-container">
+            <div class="widget-container-title">
+              <h2 class="metric-title">
+                <img
+                  src="./assets/figures/disk.svg"
+                  alt="Disk icon"
+                  class="icon"
+                />
+                Disk
+              </h2>
+            </div>
+            <canvas class="metric-plot" id="diskDrawer"></canvas>
+          </article>
+          <!--
+          <article class="widget-container">
+            <div class="widget-container-title">
+              <h2 class="metric-title">
+                <img
+                  src="./assets/figures/pckg.svg"
+                  alt="Disk icon"
+                  class="icon"
+                />
+                Pckg
+              </h2>
+            </div>
+            <canvas class="metric-plot" id="pckgDrawer"></canvas>
+          </article>
+            -->
+        </section>
+      </div>
+    </div>
+
+    <main class="active-chat none" id="activeChat">
+      <section class="message-box none" id="messageBox"></section>
+    </main>
+
+    <section class="prompt">
+      <article class="prompt-container">
+        <p class="prompt-chat">
+          <span
+            role="textbox"
+            class="prompt-chat-box"
+            name="prompt-chat"
+            id="promptChat"
+            contenteditable
+            tabindex="0"
+          ></span>
+        </p>
+        <button class="prompt-button" id="promptButton">
+          <img
+            src="./assets/figures/send.svg"
+            class="big-icon"
+            alt="Disk icon"
+          />
+        </button>
+      </article>
+
+      <footer class="footer">
+        <p>
+          We are using Node.js <span id="node-version"></span>, Chromium
+          <span id="chrome-version"></span>, and Electron
+          <span id="electron-version"></span>.
+        </p>
+      </footer>
+    </section>
+    <script src="./eventHandlers/main.js" type="module"></script>
+  </body>
+</html>

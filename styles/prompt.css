@@ -1,0 +1,81 @@
+.prompt {
+  grid-row: 5;
+  display: flex;
+  flex-direction: column;
+
+  bottom: 0;
+  position: fixed;
+
+  width: 100%;
+  background-color: var(--background-2);
+}
+
+.prompt-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.prompt-chat {
+  width: 92vw;
+  min-height: 34px;
+
+  padding-left: 8px;
+  margin: 6px auto;
+
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--decoration-2);
+
+  border: none;
+  border-radius: 5px;
+  background-color: var(--background-3);
+
+  cursor: text;
+  overflow: hidden;
+}
+
+.prompt-chat-box {
+  display: flex;
+  padding: 10px 8px 10px 0;
+
+  word-break: break-word;
+  color: var(--decoration-2);
+}
+
+.prompt-chat-box[contenteditable]:empty::before {
+  content: "Your Cosmic Companion";
+  display: flex;
+
+  opacity: 0.6;
+  font-size: 12px;
+  color: var(--decoration-2);
+}
+
+.prompt-button {
+  height: 32px;
+  width: 32px;
+
+  margin: 6px auto;
+
+  border: none;
+  border-radius: 5px;
+  background-color: var(--background-3);
+}
+
+@media only screen and (max-width: 362px) {
+  .prompt-chat {
+    width: 80vw;
+  }
+}
+
+@media only screen and (min-width: 362px) and (max-width: 576px) {
+  .prompt-chat {
+    width: 85vw;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 712px) {
+  .prompt-chat {
+    width: 90vw;
+  }
+}

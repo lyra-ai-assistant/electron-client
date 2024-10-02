@@ -1,0 +1,107 @@
+:root {
+  --background-1: #151423;
+  --background-2: #2a2839;
+  --background-3: #7a7c9b;
+
+  --decoration-1: #5a3234;
+  --decoration-2: #411c1f;
+  --decoration-3: #fd6155;
+
+  --decoration-alt-1: #e1c6be;
+  --decoration-alt-2: #b7b1be;
+
+  --letter: #f6f3e4;
+  --link: #95373c;
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+  color: var(--letter);
+  overflow-anchor: none;
+  font-family: "Roboto", "Nunito", "Montserrat", sans-serif;
+}
+
+body {
+  background-color: var(--background-1);
+}
+
+ul,
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--links);
+}
+
+.icon {
+  width: 12px;
+}
+
+.big-icon {
+  width: 24px;
+}
+
+.decoration {
+  border: 1px solid var(--decoration-1);
+}
+
+.active-chat {
+  margin-top: 10vh;
+  height: 80vh;
+}
+
+.app {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moveUpFadeOut {
+  animation: moveUpFadeOut 0.5s ease forwards;
+}
+
+.moveDownFadeIn {
+  animation-direction: reverse;
+  animation: moveUpFadeOut 0.5s ease reverse;
+}
+
+@keyframes moveUpFadeOut {
+  0% {
+    opacity: 1;
+    height: 90vh;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    height: 60vh;
+  }
+}
+@keyframes moveUpFadeOut {
+  0% {
+    opacity: 1;
+    height: 90vh;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    height: 60vh;
+  }
+}
+
+:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: var(--decoration-2);
+  opacity: 0.6;
+}
