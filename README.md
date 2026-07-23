@@ -80,5 +80,4 @@ Response: {"response": "markdown string", "session_id": "uuid"}
 
 ## License
 
-(AGPL-3.0 license)[https://github.com/lyra-ai-assistant/lyra-ui?tab=AGPL-3.0-1-ov-file]
-```
+[AGPL-3.0 license](https://github.com/lyra-ai-assistant/lyra-ui?tab=AGPL-3.0-1-ov-file)
